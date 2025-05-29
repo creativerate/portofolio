@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>CreativeRate</title>
+    
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="assets/bootstrap/css/style.css">
+
+    <!-- Custom CSS (opsional, buat styling tambahan) -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .navbar-brand {
+            font-weight: bold;
+        }
+        footer {
+            background: #f8f9fa;
+            padding: 10px;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        /* Efek hover */
+        .hover-shadow {
+            transition: background-color 0.3s, color 0.3s;
+            cursor: pointer;
+        }
+
+        /* Warna biru saat hover */
+        .hover-shadow.hovered {
+            background-color: #007bff !important;
+            color: white !important;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">Creativerate</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="skill.html">Skills</a></li>
+                    <li class="nav-item"><a class="nav-link" href="portfolio.html">Portfolio</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Konten -->
+    <div class="container mt-4">
+        
+
+<!-- Hero Section -->
+<div class="container mt-5">
+    <div class="row align-items-center">
+    <div class="col-md-6 text-center">
+    <img src="uploads/home.png') ?>" 
+         class="img-fluid shadow-lg" 
+         style="width: 250px; height: 250px; border-radius: 50%; object-fit: cover;">
+</div>
+
+        <div class="col-md-6">
+            <h1 class="fw-bold">Halo, Saya <span class="text-primary">Wahyu Anugrah</span></h1>
+            <p class="text-muted">Saya seorang desainer grafis dengan pengalaman dalam membangun identitas visual, UI/UX design, dan berbagai proyek kreatif.</p>
+            <a href="<?= base_url('/about') ?>" class="btn btn-primary">Tentang Saya</a>
+        </div>
+    </div>
+</div>
+
+<!-- Services -->
+<section class="mt-5">
+    <h2 class="text-center mb-4">Apa yang Saya Lakukan?</h2>
+    <div class="row text-center">
+        <div class="col-md-4">
+            <div class="p-4 border rounded shadow-sm text-center bg-light hover-shadow">
+                <i class="bi bi-brush fs-1 text-primary"></i>
+                <h5>Desain Grafis</h5>
+                <p>Membantu membuat desain kreatif yang menarik dan profesional untuk berbagai kebutuhan, seperti media sosial, promosi, dan branding.</p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="p-4 border rounded shadow-sm text-center bg-light hover-shadow">
+                <i class="bi bi-brush fs-1 text-primary"></i>
+                <h5>UI/UX Design</h5>
+                <p>Mendesain tampilan dan pengalaman pengguna yang interaktif serta mudah digunakan untuk website dan aplikasi digital.</p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="p-4 border rounded shadow-sm text-center bg-light hover-shadow">
+                <i class="bi bi-brush fs-1 text-primary"></i>
+                <h5>Branding & Identitas Visual</h5>
+                <p>Membangun identitas brand yang kuat dan konsisten melalui logo, warna, dan elemen visual lainnya agar brand lebih berkarakter.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Testimoni / Quote -->
+<section class="mt-5 text-center">
+    <blockquote class="blockquote">
+        <p class="mb-0 fst-italic">"Desain bukan hanya tentang bagaimana sesuatu terlihat, tapi bagaimana sesuatu bekerja."</p>
+        <footer class="blockquote-footer">Steve Jobs</footer>
+    </blockquote>
+</section>
+
+<!-- CTA -->
+<section class="mt-5 text-center">
+    <h3>Ingin melihat lebih banyak karya?</h3>
+    <a href="<?= base_url('/portfolio') ?>" class="btn btn-outline-primary">Lihat Portofolio</a>
+</section>
+
+
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        &copy; 2025 CreativeRate | All Rights Reserved.
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Script untuk efek hover -->
+    <script>
+        document.querySelectorAll('.hover-shadow').forEach(item => {
+            item.addEventListener('mouseenter', function () {
+                // Menghapus efek dari semua elemen
+                document.querySelectorAll('.hover-shadow').forEach(el => el.classList.remove('hovered'));
+                // Menambahkan efek biru pada elemen yang di-hover
+                this.classList.add('hovered');
+            });
+            item.addEventListener('mouseleave', function () {
+                // Menghapus efek biru saat cursor tidak ada
+                this.classList.remove('hovered');
+            });
+        });
+    </script>
+
+</body>
+</html>

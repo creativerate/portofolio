@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>CreativeRate</title>
+    
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="assets/bootstrap/css/style.css">
+
+    <!-- Custom CSS (opsional, buat styling tambahan) -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .navbar-brand {
+            font-weight: bold;
+        }
+        footer {
+            background: #f8f9fa;
+            padding: 10px;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        /* Efek hover */
+        .hover-shadow {
+            transition: background-color 0.3s, color 0.3s;
+            cursor: pointer;
+        }
+
+        /* Warna biru saat hover */
+        .hover-shadow.hovered {
+            background-color: #007bff !important;
+            color: white !important;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">Creativerate</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="skill.html">Skills</a></li>
+                    <li class="nav-item"><a class="nav-link" href="portfolio.html">Portfolio</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Konten -->
+    <div class="container mt-4">
+        
+<div class="container py-5">
+    <div class="text-center mb-5">
+        <h1 class="display-4 fw-bold text-dark">
+            <i class="fas fa-user-circle"></i> About Me
+        </h1>
+        <img src="/uploads/about.jpeg" alt="Profile Picture" class="profile-img mb-3">
+        <p class="lead text-secondary">
+            Seorang desainer grafis yang menggabungkan estetika dan fungsionalitas dalam setiap karya. 
+            Berpengalaman dalam desain UI/UX, branding, serta proyek kreatif yang berfokus pada detail dan inovasi.
+        </p>
+    </div>
+
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow-lg border-0 rounded-4 p-4 contact-card">
+                <div class="text-center">
+                    <h3 class="text-dark mb-3">Get in Touch</h3>
+                    <p class="text-muted">
+                        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=wahyuanugrah2000@gmail.com" target="_blank" class="contact-link">
+                            <i class="fas fa-envelope me-2"></i> wahyuanugrah2000@gmail.com
+                        </a> <br>
+                        <a href="https://instagram.com/w.anugrah_" target="_blank" class="contact-link">
+                            <i class="fab fa-instagram me-2"></i> @w.anugrah_
+                        </a> <br>
+                        <span class="contact-number">
+                            <i class="fas fa-phone me-2"></i> +1234567890
+                        </span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer class="text-center mt-5 py-3 text-muted small">
+    <p>🎨 Ikuti kelas desain gratis untuk umum! Pelajari dasar UI/UX dan branding. Info lebih lanjut di <a href="https://yourwebsite.com" target="_blank">sini</a>.</p>
+    <p>&copy; CreativeRate | kampus merdeka indonesia.</p>
+</footer>
+
+
+<style>
+    body {
+        background: #f4f6f9;
+        font-family: 'Poppins', sans-serif;
+    }
+    .text-dark {
+        color: #343a40 !important;
+    }
+    .profile-img {
+        width: 150px;
+        border-radius: 50%;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease-in-out;
+    }
+    .profile-img:hover {
+        transform: scale(1.1);
+    }
+    .contact-card {
+        background: linear-gradient(135deg, #ffffff, #f8f9fa);
+        border-radius: 12px;
+        box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease-in-out;
+    }
+    .contact-card:hover {
+        transform: scale(1.05);
+    }
+    .contact-link {
+        color: #007bff;
+        text-decoration: none;
+        font-weight: 500;
+    }
+    .contact-link:hover {
+        text-decoration: underline;
+    }
+    .contact-number {
+        color: #6c757d;
+        font-weight: 500;
+    }
+</style>
+
+
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        &copy; 2025 CreativeRate | All Rights Reserved.
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Script untuk efek hover -->
+    <script>
+        document.querySelectorAll('.hover-shadow').forEach(item => {
+            item.addEventListener('mouseenter', function () {
+                // Menghapus efek dari semua elemen
+                document.querySelectorAll('.hover-shadow').forEach(el => el.classList.remove('hovered'));
+                // Menambahkan efek biru pada elemen yang di-hover
+                this.classList.add('hovered');
+            });
+            item.addEventListener('mouseleave', function () {
+                // Menghapus efek biru saat cursor tidak ada
+                this.classList.remove('hovered');
+            });
+        });
+    </script>
+
+</body>
+</html>

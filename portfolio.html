@@ -72,23 +72,53 @@
     </div>
 
     <div class="gallery-grid">
-        <?php $images = ['9.jpg', '10.jpg', 'kebab.jpeg', 'fcb.jpeg', 'timnas.jpeg', 'milan.jpeg', 'free.jpeg', 'tes.jpg', 'order.jpg', 'kirim.jpg', 'gd.jpeg', 'promo.jpeg', 'kajian.jpeg', 'match.jpeg', 'sedekah.jpeg']; ?>
-        <?php foreach ($images as $image) : ?>
-            <div class="portfolio-item" onclick="openModal('uploads/' . $image) ?>')">
-                <img src="uploads/' . $image) ?>" 
-                     class="img-fluid rounded shadow-sm portfolio-img" 
-                     alt="Desain" />
-            </div>
-        <?php endforeach; ?>
+    <div class="portfolio-item" onclick="openModal('uploads/9.jpg')">
+        <img src="uploads/9.jpg" class="img-fluid rounded shadow-sm portfolio-img" alt="Desain 1" />
+    </div>
+    <div class="portfolio-item" onclick="openModal('uploads/10.jpg')">
+        <img src="uploads/10.jpg" class="img-fluid rounded shadow-sm portfolio-img" alt="Desain 2" />
+    </div>
+    <div class="portfolio-item" onclick="openModal('uploads/kebab.jpeg')">
+        <img src="uploads/kebab.jpeg" class="img-fluid rounded shadow-sm portfolio-img" alt="Desain 3" />
+    </div>
+    <div class="portfolio-item" onclick="openModal('uploads/fcb.jpeg')">
+        <img src="uploads/fcb.jpeg" class="img-fluid rounded shadow-sm portfolio-img" alt="Desain 4" />
+    </div>
+    <div class="portfolio-item" onclick="openModal('uploads/timnas.jpeg')">
+        <img src="uploads/timnas.jpeg" class="img-fluid rounded shadow-sm portfolio-img" alt="Desain 5" />
+    </div>
+    <div class="portfolio-item" onclick="openModal('uploads/milan.jpeg')">
+        <img src="uploads/milan.jpeg" class="img-fluid rounded shadow-sm portfolio-img" alt="Desain 6" />
+    </div>
+    <div class="portfolio-item" onclick="openModal('uploads/free.jpeg')">
+        <img src="uploads/free.jpeg" class="img-fluid rounded shadow-sm portfolio-img" alt="Desain 7" />
+    </div>
+    <div class="portfolio-item" onclick="openModal('uploads/tes.jpg')">
+        <img src="uploads/tes.jpg" class="img-fluid rounded shadow-sm portfolio-img" alt="Desain 8" />
+    </div>
+    <div class="portfolio-item" onclick="openModal('uploads/order.jpg')">
+        <img src="uploads/order.jpg" class="img-fluid rounded shadow-sm portfolio-img" alt="Desain 9" />
+    </div>
+    <div class="portfolio-item" onclick="openModal('uploads/kirim.jpg')">
+        <img src="uploads/kirim.jpg" class="img-fluid rounded shadow-sm portfolio-img" alt="Desain 10" />
+    </div>
+    <div class="portfolio-item" onclick="openModal('uploads/gd.jpeg')">
+        <img src="uploads/gd.jpeg" class="img-fluid rounded shadow-sm portfolio-img" alt="Desain 11" />
+    </div>
+    <div class="portfolio-item" onclick="openModal('uploads/promo.jpeg')">
+        <img src="uploads/promo.jpeg" class="img-fluid rounded shadow-sm portfolio-img" alt="Desain 12" />
+    </div>
+    <div class="portfolio-item" onclick="openModal('uploads/kajian.jpeg')">
+        <img src="uploads/kajian.jpeg" class="img-fluid rounded shadow-sm portfolio-img" alt="Desain 13" />
+    </div>
+    <div class="portfolio-item" onclick="openModal('uploads/match.jpeg')">
+        <img src="uploads/match.jpeg" class="img-fluid rounded shadow-sm portfolio-img" alt="Desain 14" />
+    </div>
+    <div class="portfolio-item" onclick="openModal('uploads/sedekah.jpeg')">
+        <img src="uploads/sedekah.jpeg" class="img-fluid rounded shadow-sm portfolio-img" alt="Desain 15" />
     </div>
 </div>
 
-<!-- Modal untuk melihat gambar detail -->
-<div id="imageModal" class="modal" onclick="closeModal(event)">
-    <div class="modal-content">
-        <span class="close" onclick="closeModal(event)">&times;</span>
-        <img id="modal-image" class="modal-img" src="" alt="Gambar Detail">
-    </div>
 </div>
 
 <style>

@@ -3,231 +3,497 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>CreativeRate</title>
+    <title>CreativeRate - Portfolio</title>
     
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.0/font/bootstrap-icons.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="assets/bootstrap/css/style.css">
-
-    <!-- Custom CSS (opsional, buat styling tambahan) -->
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
         }
+
+        /* Updated Navbar Styling - Same as Skills page */
+        .navbar {
+            background: rgba(255, 255, 255, 0.95) !important;
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 1rem 0;
+            transition: all 0.3s ease;
+        }
+        
         .navbar-brand {
-            font-weight: bold;
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: #667eea !important;
+            text-decoration: none;
         }
-        footer {
-            background: #f8f9fa;
-            padding: 10px;
-            text-align: center;
-            margin-top: 20px;
+        
+        .navbar-brand:hover {
+            color: #764ba2 !important;
         }
-
-        /* Efek hover */
-        .hover-shadow {
-            transition: background-color 0.3s, color 0.3s;
-            cursor: pointer;
+        
+        .navbar-nav .nav-link {
+            color: #333 !important;
+            font-weight: 500;
+            margin: 0 0.5rem;
+            padding: 0.5rem 1rem !important;
+            border-radius: 25px;
+            transition: all 0.3s ease;
         }
-
-        /* Warna biru saat hover */
-        .hover-shadow.hovered {
-            background-color: #007bff !important;
+        
+        .navbar-nav .nav-link:hover {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white !important;
+            transform: translateY(-2px);
+        }
+        
+        .navbar-nav .nav-link.active {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white !important;
+        }
+        
+        .navbar-toggler {
+            border: none;
+            padding: 0.25rem 0.5rem;
+        }
+        
+        .navbar-toggler:focus {
+            box-shadow: none;
+        }
+        
+        .navbar-toggler-icon {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%2833, 37, 41, 0.75%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+        }
+
+        .main-container {
+            padding-top: 140px; /* Adjusted for navbar height */
+        }
+
+        .portfolio-header {
+            text-align: center;
+            margin-bottom: 4rem;
+            color: white;
+        }
+
+        .portfolio-title {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            color: white;
+        }
+
+        .portfolio-title i {
+            color: #ffd700;
+            margin-right: 15px;
+        }
+
+        .portfolio-subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .btn-modern {
+            background: linear-gradient(45deg, #ffd700, #ffed4e);
+            color: #333;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(255, 215, 0, 0.4);
+        }
+
+        .btn-modern:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(255, 215, 0, 0.6);
+            color: #333;
+        }
+
+        .gallery-container {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 30px;
+            padding: 3rem 2rem;
+            margin: 2rem 0;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .gallery-grid {
+            column-count: 3;
+            column-gap: 20px;
+        }
+
+        .portfolio-item {
+            display: inline-block;
+            width: 100%;
+            margin-bottom: 20px;
+            break-inside: avoid;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .portfolio-item:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .portfolio-img {
+            width: 100%;
+            border-radius: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background: transparent;
+            padding: 0;
+            border: none;
+            max-width: 90vw;
+            max-height: 90vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .modal-img {
+            max-width: 80vw;
+            max-height: 80vh;
+            border-radius: 15px;
+            object-fit: contain;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+        }
+
+        .close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            font-size: 35px;
+            color: #ffd700;
+            cursor: pointer;
+            background: rgba(0, 0, 0, 0.5);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .close:hover {
+            background: rgba(255, 215, 0, 0.2);
+            transform: scale(1.1);
+        }
+
+        footer {
+            background: rgba(0, 0, 0, 0.3);
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            margin-top: 50px;
+        }
+
+        @keyframes fadeIn {
+            from { 
+                opacity: 0; 
+                transform: translateY(-20px); 
+            }
+            to { 
+                opacity: 1; 
+                transform: translateY(0); 
+            }
+        }
+
+        .portfolio-header {
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        .portfolio-item:nth-child(odd) {
+            animation: fadeIn 0.8s ease-in-out;
+        }
+
+        .portfolio-item:nth-child(even) {
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        @media (max-width: 768px) {
+            .gallery-grid {
+                column-count: 2;
+                column-gap: 15px;
+            }
+            
+            .portfolio-title {
+                font-size: 2rem;
+            }
+            
+            .gallery-container {
+                padding: 2rem 1rem;
+            }
+            
+            .main-container {
+                padding-top: 120px;
+            }
+            
+            .navbar-nav .nav-link {
+                margin: 0.2rem 0;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .gallery-grid {
+                column-count: 1;
+            }
+            
+            .portfolio-title {
+                font-size: 1.8rem;
+            }
         }
     </style>
 </head>
 <body>
 
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <!-- Navbar - Updated to match Skills page -->
+    <nav class="navbar navbar-expand-lg fixed-top">
         <div class="container">
-            <a class="navbar-brand" href="index.html">Creativerate</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <a class="navbar-brand" href="index.html">
+                <i class="fas fa-palette me-2"></i>CreativeRate
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
-                    <li class="nav-item"><a class="nav-link" href="skill.html">Skills</a></li>
-                    <li class="nav-item"><a class="nav-link" href="portfolio.html">Portfolio</a></li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">
+                            <i class="fas fa-home me-1"></i>Home
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">
+                            <i class="fas fa-user me-1"></i>About
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="skill.html">
+                            <i class="fas fa-cogs me-1"></i>Skills
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="portfolio.html">
+                            <i class="fas fa-briefcase me-1"></i>Portfolio
+                        </a>
+                    </li>
                 </ul>
             </div>
         </div>
     </nav>
 
-    <!-- Konten -->
-    <div class="container mt-4">
-        
-<div class="container py-5">
-    <div class="text-center mb-5">
-        <h1 class="display-5 fw-bold mb-3 text-primary">
-            <i class="fas fa-palette"></i> Galeri Desain Kreatif
-        </h1>
-        <p class="lead text-muted">Jelajahi koleksi desain kreatif yang mencerminkan seni, inovasi, dan ekspresi tanpa batas.</p>
-        <a href="#contact" class="btn btn-primary mt-3">Hubungi Saya</a>
+    <!-- Content -->
+    <div class="container main-container">
+        <div class="portfolio-header">
+            <h1 class="portfolio-title">
+                <i class="fas fa-palette"></i> Galeri Desain Kreatif
+            </h1>
+            <p class="portfolio-subtitle">Jelajahi koleksi desain kreatif yang mencerminkan seni, inovasi, dan ekspresi tanpa batas.</p>
+            <a href="https://wa.me/6285216111159" target="_blank" class="btn-modern">Hubungi Saya</a>
+        </div>
+
+        <div class="gallery-container">
+            <div class="gallery-grid">
+                <div class="portfolio-item" onclick="openModal('uploads/9.jpg')">
+                    <img src="uploads/9.jpg" class="img-fluid portfolio-img" alt="Desain 1" />
+                </div>
+                <div class="portfolio-item" onclick="openModal('uploads/10.jpg')">
+                    <img src="uploads/10.jpg" class="img-fluid portfolio-img" alt="Desain 2" />
+                </div>
+                <div class="portfolio-item" onclick="openModal('uploads/kebab.jpeg')">
+                    <img src="uploads/kebab.jpeg" class="img-fluid portfolio-img" alt="Desain 3" />
+                </div>
+                <div class="portfolio-item" onclick="openModal('uploads/fcb.jpeg')">
+                    <img src="uploads/fcb.jpeg" class="img-fluid portfolio-img" alt="Desain 4" />
+                </div>
+                <div class="portfolio-item" onclick="openModal('uploads/timnas.jpeg')">
+                    <img src="uploads/timnas.jpeg" class="img-fluid portfolio-img" alt="Desain 5" />
+                </div>
+                <div class="portfolio-item" onclick="openModal('uploads/milan.jpeg')">
+                    <img src="uploads/milan.jpeg" class="img-fluid portfolio-img" alt="Desain 6" />
+                </div>
+                <div class="portfolio-item" onclick="openModal('uploads/free.jpeg')">
+                    <img src="uploads/free.jpeg" class="img-fluid portfolio-img" alt="Desain 7" />
+                </div>
+                <div class="portfolio-item" onclick="openModal('uploads/tes.jpg')">
+                    <img src="uploads/tes.jpg" class="img-fluid portfolio-img" alt="Desain 8" />
+                </div>
+                <div class="portfolio-item" onclick="openModal('uploads/order.jpg')">
+                    <img src="uploads/order.jpg" class="img-fluid portfolio-img" alt="Desain 9" />
+                </div>
+                <div class="portfolio-item" onclick="openModal('uploads/kirim.jpg')">
+                    <img src="uploads/kirim.jpg" class="img-fluid portfolio-img" alt="Desain 10" />
+                </div>
+                <div class="portfolio-item" onclick="openModal('uploads/grapichs.jpeg')">
+                    <img src="uploads/grapichs.jpeg" class="img-fluid portfolio-img" alt="Desain 11" />
+                </div>
+                <div class="portfolio-item" onclick="openModal('uploads/promo.jpeg')">
+                    <img src="uploads/promo.jpeg" class="img-fluid portfolio-img" alt="Desain 12" />
+                </div>
+                <div class="portfolio-item" onclick="openModal('uploads/kajian.jpeg')">
+                    <img src="uploads/kajian.jpeg" class="img-fluid portfolio-img" alt="Desain 13" />
+                </div>
+                <div class="portfolio-item" onclick="openModal('uploads/timday.jpeg')">
+                    <img src="uploads/timday.jpeg" class="img-fluid portfolio-img" alt="Desain 14" />
+                </div>
+                <div class="portfolio-item" onclick="openModal('uploads/sedekah.jpeg')">
+                    <img src="uploads/sedekah.jpeg" class="img-fluid portfolio-img" alt="Desain 15" />
+                </div>
+                <div class="portfolio-item" onclick="openModal('uploads/bn1.jpeg')">
+                    <img src="uploads/bn1.jpeg" class="img-fluid portfolio-img" alt="Desain 16" />
+                </div>
+                <div class="portfolio-item" onclick="openModal('uploads/bn2.jpeg')">
+                    <img src="uploads/bn2.jpeg" class="img-fluid portfolio-img" alt="Desain 17" />
+                </div>
+                <div class="portfolio-item" onclick="openModal('uploads/bn3.jpeg')">
+                    <img src="uploads/bn3.jpeg" class="img-fluid portfolio-img" alt="Desain 18" />
+                </div>
+                <div class="portfolio-item" onclick="openModal('uploads/bn4.jpeg')">
+                    <img src="uploads/bn4.jpeg" class="img-fluid portfolio-img" alt="Desain 19" />
+                </div>
+                <div class="portfolio-item" onclick="openModal('uploads/ex.jpeg')">
+                    <img src="uploads/ex.jpeg" class="img-fluid portfolio-img" alt="Desain 20" />
+                </div>
+                <div class="portfolio-item" onclick="openModal('uploads/ly.jpeg')">
+                    <img src="uploads/ly.jpeg" class="img-fluid portfolio-img" alt="Desain 21" />
+                </div>
+                <div class="portfolio-item" onclick="openModal('uploads/wf.jpeg')">
+                    <img src="uploads/wf.jpeg" class="img-fluid portfolio-img" alt="Desain 22" />
+                </div>
+                <div class="portfolio-item" onclick="openModal('uploads/kp.jpeg')">
+                    <img src="uploads/kp.jpeg" class="img-fluid portfolio-img" alt="Desain 23" />
+                </div>
+                <div class="portfolio-item" onclick="openModal('uploads/pd.jpeg')">
+                    <img src="uploads/pd.jpeg" class="img-fluid portfolio-img" alt="Desain 24" />
+                </div>
+                <div class="portfolio-item" onclick="openModal('uploads/mc.jpeg')">
+                    <img src="uploads/mc.jpeg" class="img-fluid portfolio-img" alt="Desain 25" />
+                </div>
+                <div class="portfolio-item" onclick="openModal('uploads/gb.jpeg')">
+                    <img src="uploads/gb.jpeg" class="img-fluid portfolio-img" alt="Desain 26" />
+                </div>
+                <div class="portfolio-item" onclick="openModal('uploads/mdr.jpeg')">
+                    <img src="uploads/mdr.jpeg" class="img-fluid portfolio-img" alt="Desain 27" />
+                </div>
+            </div>
+        </div>
     </div>
 
-    <div class="gallery-grid">
-    <div class="portfolio-item" onclick="openModal('uploads/9.jpg')">
-        <img src="uploads/9.jpg" class="img-fluid rounded shadow-sm portfolio-img" alt="Desain 1" />
-    </div>
-    <div class="portfolio-item" onclick="openModal('uploads/10.jpg')">
-        <img src="uploads/10.jpg" class="img-fluid rounded shadow-sm portfolio-img" alt="Desain 2" />
-    </div>
-    <div class="portfolio-item" onclick="openModal('uploads/kebab.jpeg')">
-        <img src="uploads/kebab.jpeg" class="img-fluid rounded shadow-sm portfolio-img" alt="Desain 3" />
-    </div>
-    <div class="portfolio-item" onclick="openModal('uploads/fcb.jpeg')">
-        <img src="uploads/fcb.jpeg" class="img-fluid rounded shadow-sm portfolio-img" alt="Desain 4" />
-    </div>
-    <div class="portfolio-item" onclick="openModal('uploads/timnas.jpeg')">
-        <img src="uploads/timnas.jpeg" class="img-fluid rounded shadow-sm portfolio-img" alt="Desain 5" />
-    </div>
-    <div class="portfolio-item" onclick="openModal('uploads/milan.jpeg')">
-        <img src="uploads/milan.jpeg" class="img-fluid rounded shadow-sm portfolio-img" alt="Desain 6" />
-    </div>
-    <div class="portfolio-item" onclick="openModal('uploads/free.jpeg')">
-        <img src="uploads/free.jpeg" class="img-fluid rounded shadow-sm portfolio-img" alt="Desain 7" />
-    </div>
-    <div class="portfolio-item" onclick="openModal('uploads/tes.jpg')">
-        <img src="uploads/tes.jpg" class="img-fluid rounded shadow-sm portfolio-img" alt="Desain 8" />
-    </div>
-    <div class="portfolio-item" onclick="openModal('uploads/order.jpg')">
-        <img src="uploads/order.jpg" class="img-fluid rounded shadow-sm portfolio-img" alt="Desain 9" />
-    </div>
-    <div class="portfolio-item" onclick="openModal('uploads/kirim.jpg')">
-        <img src="uploads/kirim.jpg" class="img-fluid rounded shadow-sm portfolio-img" alt="Desain 10" />
-    </div>
-    <div class="portfolio-item" onclick="openModal('uploads/gd.jpeg')">
-        <img src="uploads/gd.jpeg" class="img-fluid rounded shadow-sm portfolio-img" alt="Desain 11" />
-    </div>
-    <div class="portfolio-item" onclick="openModal('uploads/promo.jpeg')">
-        <img src="uploads/promo.jpeg" class="img-fluid rounded shadow-sm portfolio-img" alt="Desain 12" />
-    </div>
-    <div class="portfolio-item" onclick="openModal('uploads/kajian.jpeg')">
-        <img src="uploads/kajian.jpeg" class="img-fluid rounded shadow-sm portfolio-img" alt="Desain 13" />
-    </div>
-    <div class="portfolio-item" onclick="openModal('uploads/match.jpeg')">
-        <img src="uploads/match.jpeg" class="img-fluid rounded shadow-sm portfolio-img" alt="Desain 14" />
-    </div>
-    <div class="portfolio-item" onclick="openModal('uploads/sedekah.jpeg')">
-        <img src="uploads/sedekah.jpeg" class="img-fluid rounded shadow-sm portfolio-img" alt="Desain 15" />
-    </div>
-</div>
-
-</div>
-
-<style>
-    body {
-        background: #f8f9fa;
-        font-family: 'Poppins', sans-serif;
-    }
-    .gallery-grid {
-        column-count: 3;
-        column-gap: 15px;
-    }
-    .portfolio-item {
-        display: inline-block;
-        width: 100%;
-        margin-bottom: 15px;
-        break-inside: avoid;
-        cursor: pointer;
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-    .portfolio-item:hover {
-        transform: scale(1.05);
-        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-    }
-    .portfolio-img {
-        width: 100%;
-        border-radius: 10px;
-    }
-    .modal {
-        display: none;
-        position: fixed;
-        z-index: 1000;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0, 0, 0, 0.8);
-        align-items: center;
-        justify-content: center;
-    }
-    .modal-content {
-        background: transparent;
-        padding: 0;
-        border: none;
-        max-width: 90vw;
-        max-height: 90vh;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        position: relative;
-    }
-    .modal-img {
-        max-width: 80vw;
-        max-height: 80vh;
-        border-radius: 10px;
-        object-fit: contain;
-    }
-    .close {
-        position: absolute;
-        top: 10px;
-        right: 20px;
-        font-size: 30px;
-        color: white;
-        cursor: pointer;
-    }
-    .text-center {
-        animation: fadeIn 1s ease-in-out;
-    }
-    @keyframes fadeIn {
-        from { opacity: 0; transform: translateY(-10px); }
-        to { opacity: 1; transform: translateY(0); }
-    }
-</style>
-
-<script>
-    function openModal(src) {
-        document.getElementById("imageModal").style.display = "flex";
-        document.getElementById("modal-image").src = src;
-    }
-    function closeModal(event) {
-        if (event.target.classList.contains("modal") || event.target.classList.contains("close")) {
-            document.getElementById("imageModal").style.display = "none";
-            document.getElementById("modal-image").src = ""; // Reset src saat modal ditutup
-        }
-    }
-</script>
-
-
+    <!-- Modal untuk menampilkan gambar -->
+    <div id="imageModal" class="modal" onclick="closeModal(event)">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal(event)">&times;</span>
+            <img id="modal-image" class="modal-img" src="" alt="Portfolio Image">
+        </div>
     </div>
 
     <!-- Footer -->
     <footer>
-        &copy; 2025 CreativeRate | All Rights Reserved.
+        <div class="container">
+            <p>&copy; 2025 CreativeRate | All Rights Reserved.</p>
+        </div>
     </footer>
 
     <!-- Bootstrap JS -->
-    <script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
 
-    <!-- Script untuk efek hover -->
+    <!-- Script untuk modal dan navbar -->
     <script>
-        document.querySelectorAll('.hover-shadow').forEach(item => {
-            item.addEventListener('mouseenter', function () {
-                // Menghapus efek dari semua elemen
-                document.querySelectorAll('.hover-shadow').forEach(el => el.classList.remove('hovered'));
-                // Menambahkan efek biru pada elemen yang di-hover
-                this.classList.add('hovered');
-            });
-            item.addEventListener('mouseleave', function () {
-                // Menghapus efek biru saat cursor tidak ada
-                this.classList.remove('hovered');
+        // Auto-hide navbar on scroll
+        let lastScrollTop = 0;
+        const navbar = document.querySelector('.navbar');
+        
+        window.addEventListener('scroll', function() {
+            const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+            
+            // Change navbar background based on scroll position
+            if (currentScroll > 100) {
+                navbar.style.background = 'rgba(255, 255, 255, 0.98)';
+                navbar.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
+            } else {
+                navbar.style.background = 'rgba(255, 255, 255, 0.95)';
+                navbar.style.boxShadow = 'none';
+            }
+            
+            // Hide/show navbar based on scroll direction
+            if (currentScroll > lastScrollTop && currentScroll > 100) {
+                // Scrolling down - hide navbar
+                navbar.style.transform = 'translateY(-100%)';
+            } else {
+                // Scrolling up - show navbar
+                navbar.style.transform = 'translateY(0)';
+            }
+            
+            lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
+        });
+
+        function openModal(src) {
+            document.getElementById("imageModal").style.display = "flex";
+            document.getElementById("modal-image").src = src;
+        }
+        
+        function closeModal(event) {
+            if (event.target.classList.contains("modal") || event.target.classList.contains("close")) {
+                document.getElementById("imageModal").style.display = "none";
+                document.getElementById("modal-image").src = ""; // Reset src saat modal ditutup
+            }
+        }
+
+        // Smooth scroll for navigation - same as skills page
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
             });
         });
     </script>

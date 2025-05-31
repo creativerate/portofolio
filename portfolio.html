@@ -287,9 +287,49 @@
                 font-size: 1.8rem;
             }
         }
+        /* Floating Animation */
+        .floating-element {
+            position: absolute;
+            opacity: 0.1;
+            pointer-events: none;
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        .floating-element:nth-child(1) {
+            top: 10%;
+            left: 5%;
+            animation-delay: 0s;
+        }
+        
+        .floating-element:nth-child(2) {
+            top: 20%;
+            right: 10%;
+            animation-delay: 2s;
+        }
+        
+        .floating-element:nth-child(3) {
+            bottom: 30%;
+            left: 15%;
+            animation-delay: 4s;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+        }
     </style>
 </head>
 <body>
+    <!-- Floating Elements -->
+    <div class="floating-element">
+            <i class="fas fa-palette" style="font-size: 4rem; color: white;"></i>
+    </div>
+        <div class="floating-element">
+            <i class="fas fa-paint-brush" style="font-size: 3rem; color: white;"></i>
+    </div>
+        <div class="floating-element">
+            <i class="fas fa-pen-nib" style="font-size: 2.5rem; color: white;"></i>
+    </div>
 
     <!-- Navbar - Updated to match Skills page -->
     <nav class="navbar navbar-expand-lg fixed-top">
@@ -435,7 +475,7 @@
     <!-- Footer -->
     <footer>
         <div class="container">
-            <p>&copy; 2025 CreativeRate | All Rights Reserved.</p>
+            <p>&copy; 2025 CreativeRate | Powered by ideas.</p>
         </div>
     </footer>
 

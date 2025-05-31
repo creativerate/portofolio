@@ -15,6 +15,28 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
     <style>
+         /* RESPONSIVE HERO SECTION ONLY */
+    @media (max-width: 768px) {
+        .hero-section .row {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .hero-section .col-md-6 {
+            max-width: 100%;
+        }
+
+        .profile-img {
+            margin-bottom: 2rem;
+        }
+
+        .hero-title {
+            font-size: 2.2rem;
+        }
+    }
+
         * {
             margin: 0;
             padding: 0;
@@ -270,9 +292,49 @@
                 margin: 0.2rem 0;
             }
         }
+        /* Floating Animation */
+        .floating-element {
+            position: absolute;
+            opacity: 0.1;
+            pointer-events: none;
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        .floating-element:nth-child(1) {
+            top: 10%;
+            left: 5%;
+            animation-delay: 0s;
+        }
+        
+        .floating-element:nth-child(2) {
+            top: 20%;
+            right: 10%;
+            animation-delay: 2s;
+        }
+        
+        .floating-element:nth-child(3) {
+            bottom: 30%;
+            left: 15%;
+            animation-delay: 4s;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+        }
     </style>
 </head>
 <body>
+    <!-- Floating Elements -->
+    <div class="floating-element">
+        <i class="fas fa-palette" style="font-size: 4rem; color: white;"></i>
+    </div>
+    <div class="floating-element">
+        <i class="fas fa-paint-brush" style="font-size: 3rem; color: white;"></i>
+    </div>
+    <div class="floating-element">
+        <i class="fas fa-pen-nib" style="font-size: 2.5rem; color: white;"></i>
+    </div>
 
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg fixed-top">
@@ -318,8 +380,9 @@
                     <img src="uploads/good.jpeg" alt="Wahyu Anugrah" class="profile-img">
                 </div>
                 <div class="col-md-6">
-                    <h1 class="hero-title">Halo, Saya <span class="text-accent">Wahyu Anugrah</span></h1>
-                    <p class="hero-subtitle">Saya seorang desainer grafis dengan pengalaman dalam membangun identitas visual, UI/UX design, dan berbagai proyek kreatif yang menginspirasi.</p>
+                    <h1 class="hero-title">Hallo, Saya <span class="text-accent">Wahyu Anugrah</span></h1>
+                    <p class="hero-subtitle">Saya seorang desainer grafis dengan pengalaman dalam membangun identitas visual, desain web, 
+                        dan berbagai proyek kreatif yang menginspirasi.</p>
                     <a href="about.html" class="btn-modern">Tentang Saya</a>
                 </div>
             </div>
@@ -341,10 +404,11 @@
                 <div class="col-md-4 mb-4">
                     <div class="service-card">
                         <i class="bi bi-palette service-icon"></i>
-                        <h5 class="service-title">UI/UX Design</h5>
-                        <p class="service-description">Mendesain tampilan dan pengalaman pengguna yang interaktif serta mudah digunakan untuk website dan aplikasi digital.</p>
+                        <h5 class="service-title">Web Design</h5>
+                        <p class="service-description">Mendesain tampilan website yang estetis, responsif, dan selaras dengan identitas brand.</p>
                     </div>
                 </div>
+
                 <div class="col-md-4 mb-4">
                     <div class="service-card">
                         <i class="bi bi-award service-icon"></i>
@@ -377,7 +441,7 @@
     <!-- Footer -->
     <footer>
         <div class="container">
-            <p>&copy; 2025 CreativeRate | All Rights Reserved.</p>
+            <p>&copy; 2025 CreativeRate | Powered by ideas.</p>
         </div>
     </footer>
 
@@ -385,18 +449,22 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
 
     <script>
-        // Navbar scroll effect
-        window.addEventListener('scroll', function() {
-            const navbar = document.querySelector('.navbar');
-            if (window.scrollY > 100) {
-                navbar.style.background = 'rgba(255, 255, 255, 0.98)';
-                navbar.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
-            } else {
-                navbar.style.background = 'rgba(255, 255, 255, 0.95)';
-                navbar.style.boxShadow = 'none';
-            }
-        });
+        let prevScrollPos = window.pageYOffset;
+        const navbar = document.querySelector('.navbar');
 
+        window.addEventListener('scroll', function () {
+            const currentScrollPos = window.pageYOffset;
+
+            if (prevScrollPos > currentScrollPos) {
+                // Scroll ke atas → tampilkan navbar
+                navbar.style.top = "0";
+            } else {
+                // Scroll ke bawah → sembunyikan navbar
+                navbar.style.top = "-100px";
+            }
+
+            prevScrollPos = currentScrollPos;
+        });
         // Smooth scroll for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {

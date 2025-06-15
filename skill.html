@@ -85,16 +85,33 @@
         /* Main Content */
         .main-content {
             flex: 1;
-            padding: 140px 0 60px 0; /* Adjusted for fixed navbar */
+            padding: 120px 0 40px 0; /* Fix navbar overlap */
         }
         
         .skills-container {
             background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
+            backdrop-filter: blur(15px);
             border-radius: 30px;
             padding: 50px;
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.2);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 
+                0 30px 60px rgba(0, 0, 0, 0.15),
+                0 0 0 1px rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .skills-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.1) 0%, transparent 50%);
+            pointer-events: none;
         }
         
         .section-title {
@@ -107,6 +124,7 @@
             -webkit-text-fill-color: transparent;
             background-clip: text;
             position: relative;
+            z-index: 2;
         }
         
         .section-subtitle {
@@ -115,6 +133,8 @@
             font-size: 1.2rem;
             margin-bottom: 50px;
             font-weight: 400;
+            z-index: 2;
+            position: relative;
         }
         
         .section-title::after {
@@ -125,18 +145,25 @@
             display: block;
             margin: 20px auto 0;
             border-radius: 2px;
+            box-shadow: 0 2px 10px rgba(102, 126, 234, 0.3);
         }
         
-        /* Skill Items */
+        /* Skill Items - Enhanced */
         .skill-item {
             background: linear-gradient(135deg, #ffffff 0%, #f8f9ff 100%);
-            border: 2px solid rgba(102, 126, 234, 0.1);
-            border-radius: 20px;
-            padding: 25px;
-            margin-bottom: 20px;
+            border: 3px solid rgba(102, 126, 234, 0.2);
+            border-radius: 25px;
+            padding: 30px;
+            margin-bottom: 25px;
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             position: relative;
             overflow: hidden;
+            box-shadow: 
+                0 20px 40px rgba(0, 0, 0, 0.15),
+                0 8px 16px rgba(0, 0, 0, 0.1),
+                inset 0 1px 2px rgba(255, 255, 255, 0.8),
+                0 0 0 1px rgba(255, 255, 255, 0.3);
+            z-index: 1;
         }
         
         .skill-item::before {
@@ -147,7 +174,20 @@
             width: 100%;
             height: 100%;
             background: linear-gradient(90deg, transparent, rgba(102, 126, 234, 0.1), transparent);
-            transition: left 0.6s;
+            transition: left 0.6s ease;
+            z-index: 0;
+        }
+
+        .skill-item::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, transparent 100%);
+            pointer-events: none;
+            z-index: 1;
         }
         
         .skill-item:hover::before {
@@ -155,23 +195,40 @@
         }
         
         .skill-item:hover {
-            transform: translateY(-10px) scale(1.02);
-            box-shadow: 0 25px 50px rgba(102, 126, 234, 0.2);
-            border-color: rgba(102, 126, 234, 0.3);
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: 
+                0 50px 100px rgba(102, 126, 234, 0.3),
+                0 25px 50px rgba(0, 0, 0, 0.2),
+                inset 0 1px 2px rgba(255, 255, 255, 0.9),
+                0 0 0 2px rgba(102, 126, 234, 0.4);
+            border-color: rgba(102, 126, 234, 0.5);
         }
         
         .skill-icon {
             width: 70px;
             height: 70px;
             border-radius: 20px;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
-            transition: all 0.3s ease;
+            box-shadow: 
+                0 30px 60px rgba(0, 0, 0, 0.25),
+                0 15px 30px rgba(0, 0, 0, 0.2),
+                0 5px 15px rgba(0, 0, 0, 0.15),
+                inset 0 2px 4px rgba(255, 255, 255, 0.4),
+                inset 0 -2px 4px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
             object-fit: cover;
+            position: relative;
+            z-index: 2;
+            border: 3px solid rgba(255, 255, 255, 0.6);
         }
         
         .skill-item:hover .skill-icon {
-            transform: rotate(5deg) scale(1.1);
-            box-shadow: 0 15px 30px rgba(102, 126, 234, 0.3);
+            transform: rotate(8deg) scale(1.15);
+            box-shadow: 
+                0 40px 80px rgba(102, 126, 234, 0.4),
+                0 20px 40px rgba(0, 0, 0, 0.3),
+                0 10px 20px rgba(0, 0, 0, 0.2),
+                inset 0 2px 4px rgba(255, 255, 255, 0.5),
+                inset 0 -2px 4px rgba(0, 0, 0, 0.15);
         }
         
         .skill-title {
@@ -182,36 +239,51 @@
             display: flex;
             align-items: center;
             gap: 10px;
+            position: relative;
+            z-index: 2;
         }
         
         .skill-percentage {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
-            padding: 8px 16px;
-            border-radius: 25px;
-            font-weight: 600;
-            font-size: 0.95rem;
-            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
-            min-width: 70px;
+            padding: 12px 24px;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 1rem;
+            box-shadow: 
+                0 15px 35px rgba(102, 126, 234, 0.5),
+                0 5px 15px rgba(102, 126, 234, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.3),
+                inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+            min-width: 80px;
             text-align: center;
+            position: relative;
+            z-index: 2;
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
         
-        /* Progress Bar */
+        /* Enhanced Progress Bar */
         .progress-container {
             position: relative;
-            height: 12px;
-            background: #e9ecef;
-            border-radius: 10px;
+            height: 14px;
+            background: linear-gradient(135deg, #e9ecef 0%, #f8f9fa 100%);
+            border-radius: 12px;
             overflow: hidden;
-            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+            box-shadow: 
+                inset 0 3px 6px rgba(0, 0, 0, 0.1),
+                0 1px 3px rgba(255, 255, 255, 0.8);
+            z-index: 2;
+            position: relative;
         }
         
         .progress-bar-custom {
             height: 100%;
-            border-radius: 10px;
+            border-radius: 12px;
             position: relative;
-            transition: width 2s ease-out;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+            transition: width 2.5s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 
+                0 0 20px rgba(0, 0, 0, 0.2),
+                inset 0 1px 0 rgba(255, 255, 255, 0.3);
         }
         
         .progress-bar-custom::after {
@@ -221,8 +293,8 @@
             left: 0;
             bottom: 0;
             right: 0;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-            animation: shimmer 2s infinite;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            animation: shimmer 2.5s infinite;
         }
         
         @keyframes shimmer {
@@ -230,25 +302,71 @@
             100% { transform: translateX(100%); }
         }
         
-        /* Specific Colors for Each Skill */
+        /* Enhanced Colors for Each Skill */
         .photoshop .progress-bar-custom {
-            background: linear-gradient(135deg, #001e36 0%, #31a8ff 100%);
+            background: linear-gradient(135deg, #001e36 0%, #31a8ff 50%, #74d7ff 100%);
         }
         
         .illustrator .progress-bar-custom {
-            background: linear-gradient(135deg, #300 0%, #ff9a00 100%);
+            background: linear-gradient(135deg, #300 0%, #ff9a00 50%, #ffb800 100%);
         }
         
         .coreldraw .progress-bar-custom {
-            background: linear-gradient(135deg, #006600 0%, #00cc00 100%);
+            background: linear-gradient(135deg, #006600 0%, #00cc00 50%, #00ff00 100%);
         }
         
         .canva .progress-bar-custom {
-            background: linear-gradient(135deg, #00c4cc 0%, #7b68ee 100%);
+            background: linear-gradient(135deg, #00c4cc 0%, #7b68ee 50%, #9b7fee 100%);
         }
         
         .figma .progress-bar-custom {
-            background: linear-gradient(135deg, #f24e1e 0%, #a259ff 100%);
+            background: linear-gradient(135deg, #f24e1e 0%, #a259ff 50%, #c285ff 100%);
+        }
+        
+        .wordpress .progress-bar-custom {
+            background: linear-gradient(135deg, #0073aa 0%, #00a0d2 50%, #64c9f4 100%);
+        }
+
+        /* Animation on load */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        .fade-in:nth-child(1) { animation-delay: 0.1s; }
+        .fade-in:nth-child(2) { animation-delay: 0.2s; }
+        .fade-in:nth-child(3) { animation-delay: 0.3s; }
+        .fade-in:nth-child(4) { animation-delay: 0.4s; }
+        .fade-in:nth-child(5) { animation-delay: 0.5s; }
+        .fade-in:nth-child(6) { animation-delay: 0.6s; }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Mobile responsiveness */
+        @media (max-width: 768px) {
+            .skills-container {
+                padding: 30px 20px;
+                margin: 20px;
+            }
+            
+            .section-title {
+                font-size: 2.2rem;
+            }
+            
+            .skill-item {
+                padding: 20px;
+            }
+            
+            .skill-icon {
+                width: 60px;
+                height: 60px;
+            }
         }
         
         /* Floating Animation */
@@ -409,66 +527,77 @@
                 <div class="col-lg-10">
                     <div class="skills-container">
                         <h2 class="section-title">
-                            <i class="fas fa-code me-3"></i>
-                            Design Skills
+                            <i class="fas fa-desktop me-3"></i>
+                            Software Skills
                         </h2>
+
                         <p class="section-subtitle">
                             Keahlian desain yang telah diasah dengan pengalaman dan dedikasi tinggi
                         </p>
                         
                         <div class="skills-list">
                             <!-- Adobe Photoshop -->
-                            <div class="skill-item photoshop fade-in">
+                            <div class="skill-item">
                                 <div class="d-flex align-items-center h-100">
-                                    <img src="uploads/ps.png" alt="Adobe Photoshop" class="skill-icon me-4">
+                                    <div class="skill-icon me-4" style="background: linear-gradient(135deg, #001e36 0%, #31a8ff 100%); display: flex; align-items: center; justify-content: center;">
+                                        <span style="color: white; font-size: 1.8rem; font-weight: bold; font-family: Arial, sans-serif;">Ps</span>
+                                    </div>
                                     <div class="flex-grow-1">
                                         <div class="d-flex justify-content-between align-items-center mb-3">
                                             <h6 class="skill-title mb-0">
                                                 <i class="fas fa-fire text-danger me-2"></i>
                                                 Adobe Photoshop
                                             </h6>
-                                            <span class="skill-percentage">80%</span>
                                         </div>
-                                        <div class="progress-container">
-                                            <div class="progress-bar-custom" data-width="80%"></div>
+                                        <div class="d-flex align-items-center gap-3">
+                                            <div class="progress-container photoshop flex-grow-1">
+                                                <div class="progress-bar-custom" data-width="90%" style="width: 0%;"></div>
+                                            </div>
+                                            <span class="skill-percentage">90%</span>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-
                             <!-- Adobe Illustrator -->
                             <div class="skill-item illustrator fade-in">
                                 <div class="d-flex align-items-center h-100">
-                                    <img src="uploads/ai.png" alt="Adobe Illustrator" class="skill-icon me-4">
+                                    <div class="skill-icon me-4" style="background: linear-gradient(135deg, #300 0%, #ff9a00 100%); display: flex; align-items: center; justify-content: center;">
+                                        <span style="color: white; font-size: 1.8rem; font-weight: bold; font-family: Arial, sans-serif;">Ai</span>
+                                    </div>
                                     <div class="flex-grow-1">
                                         <div class="d-flex justify-content-between align-items-center mb-3">
                                             <h6 class="skill-title mb-0">
                                                 <i class="fas fa-fire text-danger me-2"></i>
                                                 Adobe Illustrator
                                             </h6>
-                                            <span class="skill-percentage">70%</span>
                                         </div>
-                                        <div class="progress-container">
-                                            <div class="progress-bar-custom" data-width="70%"></div>
+                                        <div class="d-flex align-items-center gap-3">
+                                            <div class="progress-container flex-grow-1">
+                                                <div class="progress-bar-custom" data-width="40%" style="width: 0%;"></div>
+                                            </div>
+                                            <span class="skill-percentage">40%</span>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-
                             <!-- CorelDRAW -->
                             <div class="skill-item coreldraw fade-in">
                                 <div class="d-flex align-items-center h-100">
-                                    <img src="uploads/corel.png" alt="CorelDRAW" class="skill-icon me-4">
+                                    <div class="skill-icon me-4" style="background: linear-gradient(135deg, #006600 0%, #00cc00 100%); display: flex; align-items: center; justify-content: center;">
+                                        <i class="fas fa-pencil-alt" style="color: white; font-size: 1.5rem; text-shadow: 0 2px 4px rgba(0,0,0,0.3);"></i>
+                                    </div>
                                     <div class="flex-grow-1">
                                         <div class="d-flex justify-content-between align-items-center mb-3">
                                             <h6 class="skill-title mb-0">
                                                 <i class="fas fa-fire text-danger me-2"></i>
                                                 CorelDRAW
                                             </h6>
-                                            <span class="skill-percentage">60%</span>
                                         </div>
-                                        <div class="progress-container">
-                                            <div class="progress-bar-custom" data-width="60%"></div>
+                                        <div class="d-flex align-items-center gap-3">
+                                            <div class="progress-container flex-grow-1">
+                                                <div class="progress-bar-custom" data-width="50%" style="width: 0%;"></div>
+                                            </div>
+                                            <span class="skill-percentage">50%</span>
                                         </div>
                                     </div>
                                 </div>
@@ -477,17 +606,21 @@
                             <!-- Canva -->
                             <div class="skill-item canva fade-in">
                                 <div class="d-flex align-items-center h-100">
-                                    <img src="uploads/canva.png" alt="Canva" class="skill-icon me-4">
+                                    <div class="skill-icon me-4" style="background: linear-gradient(135deg, #00c4cc 0%, #7b68ee 100%); display: flex; align-items: center; justify-content: center;">
+                                        <i class="fas fa-paint-brush" style="color: white; font-size: 1.5rem; text-shadow: 0 2px 4px rgba(0,0,0,0.3);"></i>
+                                    </div>
                                     <div class="flex-grow-1">
                                         <div class="d-flex justify-content-between align-items-center mb-3">
                                             <h6 class="skill-title mb-0">
                                                 <i class="fas fa-fire text-danger me-2"></i>
                                                 Canva
                                             </h6>
-                                            <span class="skill-percentage">90%</span>
                                         </div>
-                                        <div class="progress-container">
-                                            <div class="progress-bar-custom" data-width="90%"></div>
+                                        <div class="d-flex align-items-center gap-3">
+                                            <div class="progress-container flex-grow-1">
+                                                <div class="progress-bar-custom" data-width="95%" style="width: 0%;"></div>
+                                            </div>
+                                            <span class="skill-percentage">95%</span>
                                         </div>
                                     </div>
                                 </div>
@@ -496,17 +629,44 @@
                             <!-- Figma -->
                             <div class="skill-item figma fade-in">
                                 <div class="d-flex align-items-center h-100">
-                                    <img src="uploads/figma.png" alt="Figma" class="skill-icon me-4">
+                                    <div class="skill-icon me-4" style="background: linear-gradient(135deg, #f24e1e 0%, #a259ff 100%); display: flex; align-items: center; justify-content: center;">
+                                        <i class="fab fa-figma" style="color: white; font-size: 1.5rem; text-shadow: 0 2px 4px rgba(0,0,0,0.3);"></i>
+                                    </div>
                                     <div class="flex-grow-1">
                                         <div class="d-flex justify-content-between align-items-center mb-3">
                                             <h6 class="skill-title mb-0">
                                                 <i class="fas fa-fire text-danger me-2"></i>
                                                 Figma
                                             </h6>
-                                            <span class="skill-percentage">75%</span>
                                         </div>
-                                        <div class="progress-container">
-                                            <div class="progress-bar-custom" data-width="75%"></div>
+                                        <div class="d-flex align-items-center gap-3">
+                                            <div class="progress-container flex-grow-1">
+                                                <div class="progress-bar-custom" data-width="45%" style="width: 0%;"></div>
+                                            </div>
+                                <span class="skill-percentage">45%</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- WordPress -->
+                            <div class="skill-item wordpress fade-in">
+                                <div class="d-flex align-items-center h-100">
+                                    <div class="skill-icon me-4" style="background: linear-gradient(135deg, #0073aa 0%, #00a0d2 100%); display: flex; align-items: center; justify-content: center;">
+                                        <i class="fab fa-wordpress" style="color: white; font-size: 1.5rem; text-shadow: 0 2px 4px rgba(0,0,0,0.3);"></i>
+                                    </div>
+                                    <div class="flex-grow-1">
+                                        <div class="d-flex justify-content-between align-items-center mb-3">
+                                            <h6 class="skill-title mb-0">
+                                                <i class="fas fa-fire text-danger me-2"></i>
+                                                WordPress
+                                            </h6>
+                                        </div>
+                                        <div class="d-flex align-items-center gap-3">
+                                            <div class="progress-container flex-grow-1">
+                                                <div class="progress-bar-custom" data-width="80%" style="width: 0%;"></div>
+                                            </div>
+                                            <span class="skill-percentage">80%</span>
                                         </div>
                                     </div>
                                 </div>
@@ -517,11 +677,205 @@
             </div>
         </div>
     </div>
+    
+    <section id="project-showcase" class="my-5">
+        <h2 class="section-title section-title-project text-center">
+            <i class="fas fa-folder-open me-3"></i>
+            <span class="responsive-title">
+                Our <span class="mobile-break">Gallery</span>
+            </span>
+        </h2>
+
+    <div class="projects-container d-flex flex-wrap justify-content-center gap-4">
+    <!-- Project 1 -->
+    <div class="project-card">
+        <img src="uploads/web.jpeg" alt="Project 1 Screenshot" class="project-image" />
+        <div class="project-info">
+            <h5>Website Landing Page</h5>
+            <p>Bikin website untuk rental, travel, portfolio, atau berita sesuai kebutuhan.</p>
+            <a href="https://wa.me/6285216111159?text=Halo%20kak,%20saya%20mau%20tanya%20jasa%20pembuatan%20website." class="project-link" target="_blank">
+                <i class="fas fa-shopping-cart me-2"></i>Pesan Website
+            </a>
+        </div>
+    </div>
+
+    <!-- Project 2 -->
+    <div class="project-card">
+        <img src="uploads/digital.jpeg" alt="Project 2 Screenshot" class="project-image" />
+        <div class="project-info">
+            <h5>All Template Sport</h5>
+            <p>Kami menyediakan lengkap template poster sport siap pakai.</p>
+            <a href="https://lynk.id/wahyucreative" class="project-link" target="_blank">
+                <i class="fas fa-shopping-cart me-2"></i>Beli Template
+            </a>
+        </div>
+    </div>
+
+    <!-- Project 3 -->
+    <div class="project-card">
+        <img src="uploads/islami2.jpeg" alt="Project 3 Screenshot" class="project-image" />
+        <div class="project-info">
+            <h5>All Template Islami</h5>
+            <p>Kami menyediakan lengkap Premium template Islami siap pakai.</p>
+            <a href="https://lynk.id/wahyucreative" class="project-link" target="_blank">
+                <i class="fas fa-shopping-cart me-2"></i>Beli Template
+            </a>
+        </div>
+    </div>
+</div>
+</section>
+
+<style>
+
+    .project-link {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 8px 16px;
+    background: #ffcc00;
+    color: #000;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: background 0.3s ease;
+}
+
+.project-link:hover {
+    background: #ffb800;
+}
+
+    #project-showcase {
+        padding: 80px 0;
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        margin: 50px 0;
+        border-radius: 30px;
+    }
+
+    #project-showcase .section-title {
+    -webkit-text-fill-color: white !important;
+    }
+
+    .section-title-project::after {
+    background: linear-gradient(135deg, #ffd700 0%, #ffd000 100%); /* warna beda */
+    width: 100px;
+    height: 4px;
+    content: '';
+    display: block;
+    margin: 20px auto 0;
+    border-radius: 2px;
+    box-shadow: 0 2px 10px rgba(255, 126, 95, 0.3);
+    }
+
+    .projects-container {
+        justify-content: center;
+    }
+
+    .mobile-break {
+    display: inline;
+    }
+
+    @media (max-width: 768px) {
+    .mobile-break {
+        display: block;
+    }
+    }
+
+
+    .project-card {
+        background: rgba(255, 255, 255, 0.15);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 20px;
+        padding: 1.5rem;
+        text-align: center;
+        color: white;
+        transition: all 0.3s ease;
+        width: 300px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .project-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.25);
+    }
+
+    .project-image {
+        width: 100%;
+        aspect-ratio: 16 / 9; /* Biar proporsional dan tidak gepeng */
+        object-fit: cover;
+        border-radius: 10px;
+    }
+
+    .project-info {
+        padding: 15px 0 0;
+    }
+
+    .project-info h5 {
+        margin-bottom: 8px;
+        font-weight: 700;
+        color: white;
+    }
+
+    .project-info p {
+        font-size: 0.9rem;
+        color: #f1f1f1;
+        margin-bottom: 6px;
+    }
+    .projects-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+    padding: 1rem;
+    }
+
+    .project-card {
+        background: #fff;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        max-width: 300px;
+        width: 100%;
+        transition: transform 0.3s ease;
+    }
+
+    .project-card:hover {
+        transform: translateY(-5px);
+    }
+
+    .project-image {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+    }
+
+    .project-info {
+        padding: 1rem;
+        text-align: center;
+    }
+
+    .project-info h5 {
+        margin-bottom: 0.5rem;
+        font-size: 1.2rem;
+        font-weight: 600;
+        color: #333;
+    }
+
+    .project-info p {
+        font-size: 0.95rem;
+        color: #555;
+        margin-bottom: 0.5rem;
+        line-height: 1.4;
+    }
+    
+</style>
 
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <p class="mb-0">&copy; 2025 CreativeRate | All Rights Reserved.</p>
+            <p class="mb-0">&copy; 2025 CreativeRate | Powered by ideas.</p>
         </div>
     </footer>
 

@@ -280,16 +280,110 @@
 
         @media (max-width: 576px) {
             .gallery-grid {
-                column-count: 1;
+                column-count: 2;
             }
-            
+
             .portfolio-title {
                 font-size: 1.8rem;
             }
         }
+
+        /* Floating Animation */
+        .floating-element {
+            position: absolute;
+            opacity: 0.1;
+            pointer-events: none;
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        .floating-element:nth-child(1) {
+            top: 10%;
+            left: 5%;
+            animation-delay: 0s;
+        }
+        
+        .floating-element:nth-child(2) {
+            top: 20%;
+            right: 10%;
+            animation-delay: 2s;
+        }
+        
+        .floating-element:nth-child(3) {
+            bottom: 30%;
+            left: 15%;
+            animation-delay: 4s;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+        }
+        .filter {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 30px;
+            font-size: 1.1rem;
+        }
+
+        .filter button {
+            background: none;
+            border: 2px solid #ffcc00;
+            color: #ffcc00;
+            padding: 10px 20px;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            font-weight: 500;
+        }
+
+        .filter button:hover {
+            background: #ffcc00;
+            color: #5c42cc;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px -5px black;
+        }
+
+        .filter button.filter-active {
+            background: #ffcc00;
+            color: #5c42cc;
+            box-shadow: 0 4px 10px -5px black;
+            font-weight: bold;
+        }
+        .filter {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 5px;
+            margin-bottom: 20px;
+            flex-wrap: nowrap;
+        }
+
+        .filter button {
+            background: none;
+            border: 1px solid #ffcc00;
+            color: #ffcc00;
+            padding: 4px 10px;
+            border-radius: 15px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            font-weight: 500;
+            font-size: 0.8rem;
+            flex-shrink: 0;
+        }
     </style>
 </head>
 <body>
+    <!-- Floating Elements -->
+    <div class="floating-element">
+            <i class="fas fa-palette" style="font-size: 4rem; color: white;"></i>
+    </div>
+        <div class="floating-element">
+            <i class="fas fa-paint-brush" style="font-size: 3rem; color: white;"></i>
+    </div>
+        <div class="floating-element">
+            <i class="fas fa-pen-nib" style="font-size: 2.5rem; color: white;"></i>
+    </div>
 
     <!-- Navbar - Updated to match Skills page -->
     <nav class="navbar navbar-expand-lg fixed-top">
@@ -328,116 +422,188 @@
     </nav>
 
     <!-- Content -->
-    <div class="container main-container">
-        <div class="portfolio-header">
-            <h1 class="portfolio-title">
-                <i class="fas fa-palette"></i> Galeri Desain Kreatif
-            </h1>
-            <p class="portfolio-subtitle">Jelajahi koleksi desain kreatif yang mencerminkan seni, inovasi, dan ekspresi tanpa batas.</p>
-            <a href="https://wa.me/6285216111159" target="_blank" class="btn-modern">Hubungi Saya</a>
-        </div>
+<div class="container main-container">
+    <div class="portfolio-header">
+        <h1 class="portfolio-title">
+            <i class="fas fa-palette"></i> Galeri Desain Kreatif
+        </h1>
+        <p class="portfolio-subtitle">Jelajahi koleksi desain kreatif yang mencerminkan seni, inovasi, dan ekspresi tanpa batas.</p>
+        <a href="https://wa.me/6285216111159" target="_blank" class="btn-modern">Hubungi Saya</a>
+    </div>
 
-        <div class="gallery-container">
-            <div class="gallery-grid">
-                <div class="portfolio-item" onclick="openModal('uploads/9.jpg')">
-                    <img src="uploads/9.jpg" class="img-fluid portfolio-img" alt="Desain 1" />
-                </div>
-                <div class="portfolio-item" onclick="openModal('uploads/10.jpg')">
-                    <img src="uploads/10.jpg" class="img-fluid portfolio-img" alt="Desain 2" />
-                </div>
-                <div class="portfolio-item" onclick="openModal('uploads/kebab.jpeg')">
-                    <img src="uploads/kebab.jpeg" class="img-fluid portfolio-img" alt="Desain 3" />
-                </div>
-                <div class="portfolio-item" onclick="openModal('uploads/fcb.jpeg')">
-                    <img src="uploads/fcb.jpeg" class="img-fluid portfolio-img" alt="Desain 4" />
-                </div>
-                <div class="portfolio-item" onclick="openModal('uploads/timnas.jpeg')">
-                    <img src="uploads/timnas.jpeg" class="img-fluid portfolio-img" alt="Desain 5" />
-                </div>
-                <div class="portfolio-item" onclick="openModal('uploads/milan.jpeg')">
-                    <img src="uploads/milan.jpeg" class="img-fluid portfolio-img" alt="Desain 6" />
-                </div>
-                <div class="portfolio-item" onclick="openModal('uploads/free.jpeg')">
-                    <img src="uploads/free.jpeg" class="img-fluid portfolio-img" alt="Desain 7" />
-                </div>
-                <div class="portfolio-item" onclick="openModal('uploads/tes.jpg')">
-                    <img src="uploads/tes.jpg" class="img-fluid portfolio-img" alt="Desain 8" />
-                </div>
-                <div class="portfolio-item" onclick="openModal('uploads/order.jpg')">
-                    <img src="uploads/order.jpg" class="img-fluid portfolio-img" alt="Desain 9" />
-                </div>
-                <div class="portfolio-item" onclick="openModal('uploads/kirim.jpg')">
-                    <img src="uploads/kirim.jpg" class="img-fluid portfolio-img" alt="Desain 10" />
-                </div>
-                <div class="portfolio-item" onclick="openModal('uploads/grapichs.jpeg')">
-                    <img src="uploads/grapichs.jpeg" class="img-fluid portfolio-img" alt="Desain 11" />
-                </div>
-                <div class="portfolio-item" onclick="openModal('uploads/promo.jpeg')">
-                    <img src="uploads/promo.jpeg" class="img-fluid portfolio-img" alt="Desain 12" />
-                </div>
-                <div class="portfolio-item" onclick="openModal('uploads/kajian.jpeg')">
-                    <img src="uploads/kajian.jpeg" class="img-fluid portfolio-img" alt="Desain 13" />
-                </div>
-                <div class="portfolio-item" onclick="openModal('uploads/timday.jpeg')">
-                    <img src="uploads/timday.jpeg" class="img-fluid portfolio-img" alt="Desain 14" />
-                </div>
-                <div class="portfolio-item" onclick="openModal('uploads/sedekah.jpeg')">
-                    <img src="uploads/sedekah.jpeg" class="img-fluid portfolio-img" alt="Desain 15" />
-                </div>
-                <div class="portfolio-item" onclick="openModal('uploads/bn1.jpeg')">
-                    <img src="uploads/bn1.jpeg" class="img-fluid portfolio-img" alt="Desain 16" />
-                </div>
-                <div class="portfolio-item" onclick="openModal('uploads/bn2.jpeg')">
-                    <img src="uploads/bn2.jpeg" class="img-fluid portfolio-img" alt="Desain 17" />
-                </div>
-                <div class="portfolio-item" onclick="openModal('uploads/bn3.jpeg')">
-                    <img src="uploads/bn3.jpeg" class="img-fluid portfolio-img" alt="Desain 18" />
-                </div>
-                <div class="portfolio-item" onclick="openModal('uploads/bn4.jpeg')">
-                    <img src="uploads/bn4.jpeg" class="img-fluid portfolio-img" alt="Desain 19" />
-                </div>
-                <div class="portfolio-item" onclick="openModal('uploads/ex.jpeg')">
-                    <img src="uploads/ex.jpeg" class="img-fluid portfolio-img" alt="Desain 20" />
-                </div>
-                <div class="portfolio-item" onclick="openModal('uploads/ly.jpeg')">
-                    <img src="uploads/ly.jpeg" class="img-fluid portfolio-img" alt="Desain 21" />
-                </div>
-                <div class="portfolio-item" onclick="openModal('uploads/wf.jpeg')">
-                    <img src="uploads/wf.jpeg" class="img-fluid portfolio-img" alt="Desain 22" />
-                </div>
-                <div class="portfolio-item" onclick="openModal('uploads/kp.jpeg')">
-                    <img src="uploads/kp.jpeg" class="img-fluid portfolio-img" alt="Desain 23" />
-                </div>
-                <div class="portfolio-item" onclick="openModal('uploads/pd.jpeg')">
-                    <img src="uploads/pd.jpeg" class="img-fluid portfolio-img" alt="Desain 24" />
-                </div>
-                <div class="portfolio-item" onclick="openModal('uploads/mc.jpeg')">
-                    <img src="uploads/mc.jpeg" class="img-fluid portfolio-img" alt="Desain 25" />
-                </div>
-                <div class="portfolio-item" onclick="openModal('uploads/gb.jpeg')">
-                    <img src="uploads/gb.jpeg" class="img-fluid portfolio-img" alt="Desain 26" />
-                </div>
-                <div class="portfolio-item" onclick="openModal('uploads/mdr.jpeg')">
-                    <img src="uploads/mdr.jpeg" class="img-fluid portfolio-img" alt="Desain 27" />
-                </div>
+    <!-- Filter Categories -->
+    <div class="filter">
+        <button data-filter="all" class="filter-active">All</button>
+        <button data-filter="sport">Sport</button>
+        <button data-filter="food">Food</button>
+        <button data-filter="islami">Islami</button>
+        <button data-filter="event">Event</button>
+        <button data-filter="banner">Banner</button>
+    </div>
+
+    <div class="gallery-container">
+        <div class="gallery-grid">
+            <div class="portfolio-item" data-category="event" onclick="openModal('uploads/9.jpg')">
+                <img src="uploads/9.jpg" class="img-fluid portfolio-img" alt="Desain 1" />
+            </div>
+            <div class="portfolio-item" data-category="event" onclick="openModal('uploads/10.jpg')">
+                <img src="uploads/10.jpg" class="img-fluid portfolio-img" alt="Desain 2" />
+            </div>
+            <div class="portfolio-item" data-category="event" onclick="openModal('uploads/kiri.jpg')">
+                <img src="uploads/kiri.jpg" class="img-fluid portfolio-img" alt="Desain 3" />
+            </div>
+            <div class="portfolio-item" data-category="event" onclick="openModal('uploads/order.jpg')">
+                <img src="uploads/order.jpg" class="img-fluid portfolio-img" alt="Desain 4" />
+            </div>
+            <div class="portfolio-item" data-category="event" onclick="openModal('uploads/promo.jpeg')">
+                <img src="uploads/promo.jpeg" class="img-fluid portfolio-img" alt="Desain 5" />
+            </div>
+            <div class="portfolio-item" data-category="event" onclick="openModal('uploads/free.jpeg')">
+                <img src="uploads/free.jpeg" class="img-fluid portfolio-img" alt="Desain 6" />
+            </div>
+            <div class="portfolio-item" data-category="event" onclick="openModal('uploads/gd.jpeg')">
+                <img src="uploads/gd.jpeg" class="img-fluid portfolio-img" alt="Desain 7" />
+            </div>
+            <div class="portfolio-item" data-category="event" onclick="openModal('uploads/gmm.jpeg')">
+                <img src="uploads/gmm.jpeg" class="img-fluid portfolio-img" alt="Desain 8" />
+            </div>
+            <div class="portfolio-item" data-category="event" onclick="openModal('uploads/gm.jpeg')">
+                <img src="uploads/gm.jpeg" class="img-fluid portfolio-img" alt="Desain 9" />
+            </div>
+            <div class="portfolio-item" data-category="event" onclick="openModal('uploads/kirim.jpg')">
+                <img src="uploads/kirim.jpg" class="img-fluid portfolio-img" alt="Desain 10" />
+            </div>
+            <div class="portfolio-item" data-category="islami" onclick="openModal('uploads/kajian.jpeg')">
+                <img src="uploads/kajian.jpeg" class="img-fluid portfolio-img" alt="Desain 11" />
+            </div>
+            <div class="portfolio-item" data-category="islami" onclick="openModal('uploads/sedekah.jpeg')">
+                <img src="uploads/sedekah.jpeg" class="img-fluid portfolio-img" alt="Desain 12" />
+            </div>
+            <div class="portfolio-item" data-category="islami" onclick="openModal('uploads/lebaran.jpeg')">
+                <img src="uploads/lebaran.jpeg" class="img-fluid portfolio-img" alt="Desain 13" />
+            </div>
+            <div class="portfolio-item" data-category="islami" onclick="openModal('uploads/adha.png')">
+                <img src="uploads/adha.png" class="img-fluid portfolio-img" alt="Desain 14" />
+            </div>
+            <div class="portfolio-item" data-category="islami" onclick="openModal('uploads/adha2.png')">
+                <img src="uploads/adha2.png" class="img-fluid portfolio-img" alt="Desain 15" />
+            </div>
+            <div class="portfolio-item" data-category="islami" onclick="openModal('uploads/fitri.png')">
+                <img src="uploads/fitri.png" class="img-fluid portfolio-img" alt="Desain 16" />
+            </div>
+            <div class="portfolio-item" data-category="islami" onclick="openModal('uploads/info1.png')">
+                <img src="uploads/info1.png" class="img-fluid portfolio-img" alt="Desain 17" />
+            </div>
+            <div class="portfolio-item" data-category="islami" onclick="openModal('uploads/isra1.png')">
+                <img src="uploads/isra1.png" class="img-fluid portfolio-img" alt="Desain 18" />
+            </div>
+            <div class="portfolio-item" data-category="islami" onclick="openModal('uploads/isra2.png')">
+                <img src="uploads/isra2.png" class="img-fluid portfolio-img" alt="Desain 19" />
+            </div>
+            <div class="portfolio-item" data-category="islami" onclick="openModal('uploads/jb.png')">
+                <img src="uploads/jb.png" class="img-fluid portfolio-img" alt="Desain 20" />
+            </div>
+            <div class="portfolio-item" data-category="islami" onclick="openModal('uploads/kajian2.png')">
+                <img src="uploads/kajian2.png" class="img-fluid portfolio-img" alt="Desain 21" />
+            </div>
+             <div class="portfolio-item" data-category="islami" onclick="openModal('uploads/kajian3.png')">
+                <img src="uploads/kajian3.png" class="img-fluid portfolio-img" alt="Desain 22" />
+            </div>
+             <div class="portfolio-item" data-category="islami" onclick="openModal('uploads/kajian4.png')">
+                <img src="uploads/kajian4.png" class="img-fluid portfolio-img" alt="Desain 23" />
+            </div>
+             <div class="portfolio-item" data-category="islami" onclick="openModal('uploads/puasa.png')">
+                <img src="uploads/puasa.png" class="img-fluid portfolio-img" alt="Desain 24" />
+            </div>
+             <div class="portfolio-item" data-category="islami" onclick="openModal('uploads/tbi.png')">
+                <img src="uploads/tbi.png" class="img-fluid portfolio-img" alt="Desain 25" />
+            </div>
+             <div class="portfolio-item" data-category="islami" onclick="openModal('uploads/umroh.png')">
+                <img src="uploads/umroh.png" class="img-fluid portfolio-img" alt="Desain 26" />
+            </div>
+             <div class="portfolio-item" data-category="sport" onclick="openModal('uploads/idzez.jpeg')">
+                <img src="uploads/idzez.jpeg" class="img-fluid portfolio-img" alt="Desain 27" />
+            </div>
+            <div class="portfolio-item" data-category="sport" onclick="openModal('uploads/haye.jpeg')">
+                <img src="uploads/haye.jpeg" class="img-fluid portfolio-img" alt="Desain 28" />
+            </div>
+            <div class="portfolio-item" data-category="sport" onclick="openModal('uploads/un.jpeg')">
+                <img src="uploads/un.jpeg" class="img-fluid portfolio-img" alt="Desain 29" />
+            </div>
+            <div class="portfolio-item" data-category="sport" onclick="openModal('uploads/roma.jpeg')">
+                <img src="uploads/roma.jpeg" class="img-fluid portfolio-img" alt="Desain 30" />
+            </div>
+            <div class="portfolio-item" data-category="sport" onclick="openModal('uploads/barca.jpeg')">
+                <img src="uploads/barca.jpeg" class="img-fluid portfolio-img" alt="Desain 31" />
+            </div>
+            <div class="portfolio-item" data-category="sport" onclick="openModal('uploads/henderson.jpeg')">
+                <img src="uploads/henderson.jpeg" class="img-fluid portfolio-img" alt="Desain 32" />
+            </div>
+            <div class="portfolio-item" data-category="sport" onclick="openModal('uploads/timday.jpeg')">
+                <img src="uploads/timday.jpeg" class="img-fluid portfolio-img" alt="Desain 33" />
+            </div>
+            <div class="portfolio-item" data-category="sport" onclick="openModal('uploads/mdr.jpeg')">
+                <img src="uploads/mdr.jpeg" class="img-fluid portfolio-img" alt="Desain 34" />
+            </div>
+            <div class="portfolio-item" data-category="sport" onclick="openModal('uploads/fcb.jpeg')">
+                <img src="uploads/fcb.jpeg" class="img-fluid portfolio-img" alt="Desain 35" />
+            </div>
+            <div class="portfolio-item" data-category="sport" onclick="openModal('uploads/milan.jpeg')">
+                <img src="uploads/milan.jpeg" class="img-fluid portfolio-img" alt="Desain 36" />
+            </div>
+            <div class="portfolio-item" data-category="food" onclick="openModal('uploads/wf.jpeg')">
+                <img src="uploads/wf.jpeg" class="img-fluid portfolio-img" alt="Desain 37" />
+            </div>
+            <div class="portfolio-item" data-category="food" onclick="openModal('uploads/ex.jpeg')">
+                <img src="uploads/ex.jpeg" class="img-fluid portfolio-img" alt="Desain 39" />
+            </div>
+            <div class="portfolio-item" data-category="food" onclick="openModal('uploads/kp.jpeg')">
+                <img src="uploads/kp.jpeg" class="img-fluid portfolio-img" alt="Desain 40" />
+            </div>
+            <div class="portfolio-item" data-category="food" onclick="openModal('uploads/gb.jpeg')">
+                <img src="uploads/gb.jpeg" class="img-fluid portfolio-img" alt="Desain 41" />
+            </div>
+            <div class="portfolio-item" data-category="food" onclick="openModal('uploads/pd.jpeg')">
+                <img src="uploads/pd.jpeg" class="img-fluid portfolio-img" alt="Desain 42" />
+            </div>
+            <div class="portfolio-item" data-category="food" onclick="openModal('uploads/mc.jpeg')">
+                <img src="uploads/mc.jpeg" class="img-fluid portfolio-img" alt="Desain 43" />
+            </div>
+            <div class="portfolio-item" data-category="food" onclick="openModal('uploads/sw.jpeg')">
+                <img src="uploads/sw.jpeg" class="img-fluid portfolio-img" alt="Desain 44" />
+            </div>
+            <div class="portfolio-item" data-category="food" onclick="openModal('uploads/ly.jpeg')">
+                <img src="uploads/ly.jpeg" class="img-fluid portfolio-img" alt="Desain 45" />
+            </div>
+            <div class="portfolio-item" data-category="banner" onclick="openModal('uploads/bn1.jpeg')">
+                <img src="uploads/bn1.jpeg" class="img-fluid portfolio-img" alt="Desain 46" />
+            </div>
+            <div class="portfolio-item" data-category="banner" onclick="openModal('uploads/bn2.jpeg')">
+                <img src="uploads/bn2.jpeg" class="img-fluid portfolio-img" alt="Desain 47" />
+            </div>
+            <div class="portfolio-item" data-category="banner" onclick="openModal('uploads/bn3.jpeg')">
+                <img src="uploads/bn3.jpeg" class="img-fluid portfolio-img" alt="Desain 48" />
+            </div>
+            <div class="portfolio-item" data-category="banner" onclick="openModal('uploads/bn4.jpeg')">
+                <img src="uploads/bn4.jpeg" class="img-fluid portfolio-img" alt="Desain 49" />
             </div>
         </div>
     </div>
+</div>
 
-    <!-- Modal untuk menampilkan gambar -->
-    <div id="imageModal" class="modal" onclick="closeModal(event)">
-        <div class="modal-content">
-            <span class="close" onclick="closeModal(event)">&times;</span>
-            <img id="modal-image" class="modal-img" src="" alt="Portfolio Image">
-        </div>
+<!-- Modal -->
+<div id="imageModal" class="modal" onclick="closeModal(event)"> 
+    <div class="modal-content">
+        <span class="close" onclick="closeModal(event)">&times;</span>
+        <img id="modal-image" class="modal-img" src="" alt="Portfolio Image">
     </div>
+</div>
 
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <p>&copy; 2025 CreativeRate | All Rights Reserved.</p>
-        </div>
-    </footer>
+<footer>
+    <div class="container">
+        <p>&copy; 2025 CreativeRate | Powered by ideas.</p>
+    </div>
+</footer>
 
     <!-- Bootstrap JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
@@ -497,6 +663,41 @@
             });
         });
     </script>
+
+    <script>
+    // Filter portfolio
+    document.querySelectorAll('.filter button').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+            const filter = this.dataset.filter;
+            document.querySelectorAll('.portfolio-item').forEach(function (item) {
+                if (filter === 'all' ||
+                    item.dataset.category === filter) {
+                    item.style.display = '';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+
+            document.querySelectorAll('.filter button').forEach(function (btn) {
+                btn.classList.remove('filter-active');
+            });
+            this.classList.add('filter-active');
+        });
+    });
+
+    // Modal
+    function openModal(src) {
+        document.getElementById("imageModal").style.display = "flex";
+        document.getElementById("modal-image").src = src;
+    }
+    function closeModal(event) {
+        if (event.target.classList.contains("modal") ||
+            event.target.classList.contains("close")) {
+            document.getElementById("imageModal").style.display = "none";
+            document.getElementById("modal-image").src = "";
+        }
+    }
+</script>
 
 </body>
 </html>
